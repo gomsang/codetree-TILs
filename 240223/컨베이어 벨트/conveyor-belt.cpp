@@ -23,6 +23,9 @@ int main() {
 
    for(int i = 0; i < n * 2; i++) {
         cout << belt[i] << " ";
+        if(i == n - 1) {
+            cout << endl;
+        }
     }
     
 
