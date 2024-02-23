@@ -8,8 +8,10 @@ int stack[LIST_MAX];
 
 
 int delBlock(int n, int s, int e) {
-    for(int i = n - e; i < (n - (e - s + 1)); i++) {
-        stack[i] = stack[n-s + (i - (n - e))];
+    int startpos = n - e;
+    int endpos = n - s;
+    for(int i = startpos; i < (n - (e - s + 1)); i++) {
+        stack[i] = stack[endpos + (i - startpos) + 1];
     }
     return e - s + 1;
 }
@@ -26,12 +28,11 @@ int main() {
     int s, e;
     cin >> s >> e;
     n -= delBlock(n, s, e);
-
     cin >> s >> e;
     n -= delBlock(n, s, e);
 
     cout << n << endl;
-    for(int i = n - 1; i >= 0; i--){
+     for(int i = n - 1; i >= 0; i--){
         cout << stack[i] << endl;
     }
     return 0;
