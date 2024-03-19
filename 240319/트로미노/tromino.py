@@ -28,7 +28,7 @@ shapemax = 0
 for row in range(N - 1):
     for col in range(M - 1):
         shapemax = max(shapemax, calcLshapeMax(row, col))
-        if row < N - 2 and col < N - 2:
+        if row < N - 2 and col < M - 2:
             shapemax = max(shapemax, calcIshapeMax(row, col))
 
 print(shapemax)
