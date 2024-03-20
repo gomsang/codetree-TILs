@@ -25,7 +25,7 @@ gold = 0
 
 for row in range(N):
     for col in range(N):
-        for k in range(N):
+        for k in range(2 * N):
             dig_gold = dig(row, col, k)
             if M * dig_gold >= k * k + (k + 1) * (k + 1):
                 gold = max(gold, dig_gold)
