@@ -28,7 +28,7 @@ def check(width, height):
     return False
 
 
-score = 0
+score = -1
 for w in range(1, M + 1):
     for h in range(1, N + 1):
         if check(w, h):
