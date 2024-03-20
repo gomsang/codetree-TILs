@@ -1,17 +1,19 @@
 grid = []
 
+
 def shift_left():
     for row in range(4):
         r = [n for n in grid[row] if n > 0]
 
         for i in range(len(r) - 1):
-            if r[i] == r[i+1]:
-                r[i] = r[i] + r[i+1]
+            if r[i] == r[i + 1]:
+                r[i] = r[i] + r[i + 1]
                 r[i + 1] = 0
 
         r = [n for n in r if n > 0]
         r.extend([0] * (4 - len(r)))
         grid[row] = r
+
 
 def shift_right():
     for row in range(4):
@@ -20,17 +22,19 @@ def shift_right():
     for row in range(4):
         grid[row].reverse()
 
+
 def shift_up():
     global grid
-    grid = [row for row in zip(*grid)]
+    grid = [list(row) for row in zip(*grid)]
     shift_left()
-    grid = [row for row in zip(*grid)]
+    grid = [list(row) for row in zip(*grid)]
+
 
 def shift_down():
     global grid
-    grid = [row for row in zip(*grid)]
+    grid = [list(row) for row in zip(*grid)]
     shift_right()
-    grid = [row for row in zip(*grid)]
+    grid = [list(row) for row in zip(*grid)]
 
 
 for _ in range(4):
