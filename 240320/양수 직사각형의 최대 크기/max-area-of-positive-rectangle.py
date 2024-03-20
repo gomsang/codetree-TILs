@@ -9,7 +9,7 @@ for _ in range(N):
 
 for row in range(N):
     for col in range(M):
-        if grid[row][col] < 0:
+        if grid[row][col] <= 0:
             negative_numbers.append([row, col])
 
 
