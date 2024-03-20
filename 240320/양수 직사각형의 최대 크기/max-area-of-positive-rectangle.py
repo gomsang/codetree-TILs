@@ -31,7 +31,7 @@ def check(width, height):
 score = 0
 for w in range(1, M + 1):
     for h in range(1, N + 1):
-        if w * h > score:
-            if check(w, h): score = w * h
+        if check(w, h):
+            score = max(score, w * h)
 
 print(score)
