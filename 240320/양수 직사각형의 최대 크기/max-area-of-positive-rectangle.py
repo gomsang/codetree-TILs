@@ -28,10 +28,16 @@ def check(width, height):
     return False
 
 
-score = -1
-for w in range(1, M + 1):
-    for h in range(1, N + 1):
-        if check(w, h):
-            score = max(score, w * h)
+def run():
+    if not negative_numbers:
+        return N * M
 
-print(score)
+    score = -1
+    for w in range(1, M + 1):
+        for h in range(1, N + 1):
+            if check(w, h):
+                score = max(score, w * h)
+    return score
+
+
+print(run())
