@@ -5,6 +5,7 @@ grid = [
     for _ in range(n)
 ]
 
+
 # 행복한 수열 찾기 함수
 def find_happiness(row, col):
     # 1. 각 행과 열 추출하여 리스트 생성
@@ -21,30 +22,31 @@ def find_happiness(row, col):
             h_row.append(grid[i][j])
             h_col.append(grid[j][i])
 
-        rows.append(h_row) # 각 행에 대한 리스트
-        cols.append(h_col) # 각 열에 대한 리스트
+        rows.append(h_row)  # 각 행에 대한 리스트
+        cols.append(h_col)  # 각 열에 대한 리스트
 
     # 열
     for r in rows:
         # print(r)
         cnt_same1 = []
-        for a in range(len(r)-1):
-            if r[a] == r[a+1]:
+        for a in range(len(r) - 1):
+            if r[a] == r[a + 1]:
                 cnt_same1.append(1)
             # print(cnt_same1)
-        if sum(cnt_same1) >= m-1:
+        if sum(cnt_same1) >= m:
             num_of_happiness += 1
 
     for c in cols:
         # print(c)
         cnt_same2 = []
-        for b in range(len(c)-1):
-            if c[b] == c[b+1]:
+        for b in range(len(c) - 1):
+            if c[b] == c[b + 1]:
                 cnt_same2.append(1)
             # print(cnt_same2)
-        if sum(cnt_same2) >= m-1:
+        if sum(cnt_same2) >= m:
             num_of_happiness += 1
 
     print(num_of_happiness)
-    
+
+
 find_happiness(n, n)
