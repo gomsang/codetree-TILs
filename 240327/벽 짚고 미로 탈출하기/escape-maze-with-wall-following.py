@@ -42,9 +42,6 @@ while (True):
             t += 1
             x = x + direction_grid[direction][0]
             y = y + direction_grid[direction][1]
-            if not rightwallchk(x + direction_grid[(direction + 1) % 4][0], y + direction_grid[(direction + 1) % 4][1]):
-                t = -1
-                break
         else:
             x = x + direction_grid[direction][0]
             y = y + direction_grid[direction][1]
