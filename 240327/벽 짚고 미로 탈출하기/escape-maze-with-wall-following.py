@@ -23,12 +23,18 @@ def rightwallchk(x, y):
         return True
     return False
 
+
+iso_cnt = 0
 t = 0
 while(True):
+    if iso_cnt >= 4:
+        t = -1
+        break
     if not rightwallchk(x + direction_grid[(direction + 1) % 4][0], y + direction_grid[(direction + 1) % 4][1]):
         t = -1
         break
     if avilable(x + direction_grid[direction][0], y + direction_grid[direction][1]):
+        iso_cnt = 0
         if not (1 <= x + direction_grid[direction][0] <= n and 1 <= y + direction_grid[direction][1] <= n):
             t += 1
             break
@@ -44,8 +50,9 @@ while(True):
             y = y + direction_grid[direction][1]
             t += 2
     else:
+        iso_cnt += 1
         direction = (direction - 1) % 4
-    
+
     if t >= n * n:
         t = -1
         break
