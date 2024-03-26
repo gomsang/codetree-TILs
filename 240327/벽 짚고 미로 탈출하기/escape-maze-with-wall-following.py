@@ -13,12 +13,21 @@ for row in range(n):
 
 def avilable(x, y):
     if not (1 <= x <= n and 1 <= y <= n): return True
-    if grid[y - 1][x - 1] == '#':
+    if grid[y - 1][x - 1] == "#":
         return False
     return True
 
+def rightwallchk(x, y):
+    if not (1 <= x <= n and 1 <= y <= n): return True
+    if grid[y - 1][x - 1] == "#":
+        return True
+    return False
+
 t = 0
 while(True):
+    if not rightwallchk(x + direction_grid[(direction + 1) % 4][0], y + direction_grid[(direction + 1) % 4][1]):
+        t = -1
+        break
     if avilable(x + direction_grid[direction][0], y + direction_grid[direction][1]):
         if not (1 <= x + direction_grid[direction][0] <= n and 1 <= y + direction_grid[direction][1] <= n):
             t += 1
