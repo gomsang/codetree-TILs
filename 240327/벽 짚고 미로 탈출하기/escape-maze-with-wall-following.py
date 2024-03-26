@@ -45,5 +45,9 @@ while(True):
             t += 2
     else:
         direction = (direction - 1) % 4
+    
+    if t >= n * n:
+        t = -1
+        break
 
 print(t)
