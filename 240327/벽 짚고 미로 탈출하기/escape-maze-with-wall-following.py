@@ -1,0 +1,39 @@
+direction_grid = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+
+# 우 하 좌 상
+direction = 0
+
+n = int(input())
+x, y = map(int, input().split())
+
+grid = []
+
+for row in range(n):
+    grid.append(list(input()))
+
+def avilable(x, y):
+    if grid[y - 1][x - 1] == '#':
+        return False
+    return True
+
+t = 0
+while(True):
+    if avilable(x + direction_grid[direction][0], y + direction_grid[direction][1]):
+        if not (1 <= x + direction_grid[direction][0] <= n and 1 <= y + direction_grid[direction][1] <= n):
+            t += 1
+            break
+        if not avilable(x + direction_grid[direction][0] + direction_grid[(direction + 1) % 4][0], y + direction_grid[direction][1] + direction_grid[(direction + 1) % 4][1]):
+            t += 1
+            x = x + direction_grid[direction][0]
+            y = y + direction_grid[direction][1]
+        else:
+            x = x + direction_grid[direction][0]
+            y = y + direction_grid[direction][1]
+            direction = (direction + 1) % 4
+            x = x + direction_grid[direction][0]
+            y = y + direction_grid[direction][1]
+            t += 2
+    else:
+        direction = (direction - 1) % 4
+
+print(t)
