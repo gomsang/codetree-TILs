@@ -53,4 +53,8 @@ while(True):
         iso_cnt += 1
         direction = (direction - 1) % 4
 
+    if t >= n * n:
+        t = -1
+        break
+
 print(t)
