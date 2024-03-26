@@ -1,4 +1,4 @@
-direction_grid = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+direction_grid = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
 # 우 하 좌 상
 direction = 0
@@ -12,6 +12,7 @@ for row in range(n):
     grid.append(list(input()))
 
 def avilable(x, y):
+    if not (1 <= x <= n and 1 <= y <= n): return True
     if grid[y - 1][x - 1] == '#':
         return False
     return True
