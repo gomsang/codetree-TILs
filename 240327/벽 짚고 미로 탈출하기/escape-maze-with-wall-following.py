@@ -1,4 +1,6 @@
-direction_grid = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+import copy
+
+move = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
 # 우 하 좌 상
 direction = 0
@@ -12,50 +14,87 @@ for row in range(n):
     grid.append(list(input()))
 
 
-def avilable(x, y):
-    if not (1 <= x <= n and 1 <= y <= n): return True
-    if grid[y - 1][x - 1] == "#":
+def rotate_left():
+    global direction
+    direction = (direction - 1) % 4
+
+
+def rotate_right():
+    global direction
+    direction = (direction + 1) % 4
+
+
+def is_move_position_is_wall(x, y, direction):
+    # 벗어남 (탈출)
+    if not ((0 <= (x + move[direction][0]) - 1 < n) and (0 <= (y + move[direction][1]) - 1 < n)):
         return False
-    return True
-
-
-def rightwallchk(x, y):
-    if not (1 <= x <= n and 1 <= y <= n): return True
-    if grid[y - 1][x - 1] == "#":
+    if grid[(x + move[direction][0]) - 1][(y + move[direction][1]) - 1] == "#":
         return True
     return False
 
 
-iso_cnt = 0
+def is_move_position_is_escape(x, y, direction):
+    # 벗어남 (탈출)
+    if not ((0 <= (x + move[direction][0]) - 1 < n) and (0 <= (y + move[direction][1]) - 1 < n)):
+        return True
+    return False
+
+
+def is_move_position_right_side_wall(x, y, direction):
+    if not ((0 <= (x + move[direction][0] + move[(direction + 1) % 4][0]) - 1 < n) and (
+            0 <= (y + move[direction][1] + move[(direction + 1) % 4][1]) - 1 < n)):
+        return False
+    if grid[
+        (x + move[direction][0] + move[(direction + 1) % 4][0]) - 1][
+        (y + move[direction][1] + move[(direction + 1) % 4][1]) - 1] == "#":
+        return True
+    return False
+
+
+def print_direction(x, y, direction):
+    # 방향에 따른 화살표 기호를 정의합니다.
+    arrows = ['→', '↓', '←', '↑']
+
+    # grid의 복사본을 만듭니다.
+    copied = copy.deepcopy(grid)
+
+    # 주어진 위치와 방향에 맞는 화살표 기호를 넣습니다.
+    # x와 y는 1부터 시작하는 위치를 가정합니다.
+    copied[y - 1][x - 1] = arrows[direction]
+
+    print("---------------------------")
+    # 결과 grid를 출력합니다.
+    for row in copied:
+        print(' '.join(row))
+
+
+isocnt = 0
 t = 0
 while (True):
-    if iso_cnt >= 4:
+    # print_direction(x, y, direction)
+    if isocnt >= 4:
         t = -1
         break
-    if avilable(x + direction_grid[direction][0], y + direction_grid[direction][1]):
-        iso_cnt = 0
-        if not (1 <= x + direction_grid[direction][0] <= n and 1 <= y + direction_grid[direction][1] <= n):
-            t += 1
-            break
-        if not avilable(x + direction_grid[direction][0] + direction_grid[(direction + 1) % 4][0],
-                        y + direction_grid[direction][1] + direction_grid[(direction + 1) % 4][1]):
-            t += 1
-            x = x + direction_grid[direction][0]
-            y = y + direction_grid[direction][1]
-        else:
-            x = x + direction_grid[direction][0]
-            y = y + direction_grid[direction][1]
-            direction = (direction + 1) % 4
-            x = x + direction_grid[direction][0]
-            y = y + direction_grid[direction][1]
-            t += 2
-            if not rightwallchk(x + direction_grid[(direction + 1) % 4][0], y + direction_grid[(direction + 1) % 4][1]):
-                t = -1
-                break
+    if is_move_position_is_wall(x, y, direction):
+        rotate_left()
+        isocnt += 1
+    elif is_move_position_is_escape(x, y, direction):
+        t += 1
+        break
     else:
-        iso_cnt += 1
-        direction = (direction - 1) % 4
-
+        isocnt = 0
+        if is_move_position_right_side_wall(x, y, direction):
+            x = x + move[direction][0]
+            y = y + move[direction][1]
+            t += 1
+        else:
+            x = x + move[direction][0]
+            y = y + move[direction][1]
+            t += 1
+            rotate_right()
+            x = x + move[direction][0]
+            y = y + move[direction][1]
+            t += 1
     if t >= n * n:
         t = -1
         break
