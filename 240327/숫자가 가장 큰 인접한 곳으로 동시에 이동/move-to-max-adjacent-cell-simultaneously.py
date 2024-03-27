@@ -40,7 +40,7 @@ while time < t:
     balls = copied_balls
     for row in range(n):
         for col in range(n):
-            if balls[row][col] > 1: balls[row][col] = 1
+            if balls[row][col] > 1: balls[row][col] = 0
 
 count = 0
 for row in range(n):
