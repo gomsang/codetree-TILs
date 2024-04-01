@@ -13,12 +13,13 @@ for _ in range(N):
     grid.append(list(map(int, input().split())))
 
 coords = {}
+for row in range(N):
+    for col in range(N):
+        coords[grid[row][col]] = (row, col)
+        
 for _ in range(M):
-    for row in range(N):
-        for col in range(N):
-            coords[grid[row][col]] = (row, col)
 
-    for num in range(16):
+    for num in range(N * N):
         row = coords[num + 1][0]
         col = coords[num + 1][1]
 
