@@ -1,7 +1,7 @@
 n = int(input())
 visited = [False] * n
 
-def visit(arr, pos):
+def visit(arr):
     if len(arr) == n:
         print(*arr)
         return
