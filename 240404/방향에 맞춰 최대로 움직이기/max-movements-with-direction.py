@@ -1,5 +1,5 @@
 n = int(input())
-directions = [(1,0), (1,1), (0, 1), (-1, 1), (-1, 0), (-1, -1), (0, -1), (-1, -1)]
+directions = [(-1,0), (-1,1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1)]
 
 grid_numbers = []
 grid_directions = []
@@ -19,8 +19,9 @@ def get_availables(r, c):
     direction = grid_directions[r][c] - 1
     step = 1
     moving_availables = []
-    while (0 <= r + directions[direction][0] * step < n  and 0 <= r + directions[direction][1] * step < n) and grid_numbers[r][c] < grid_numbers[directions[direction][0] * step][r + directions[direction][1] * step]:
-        moving_availables.append((r + directions[direction][0] * step, r + directions[direction][1] * step))
+    while (0 <= r + directions[direction][0] * step < n  and 0 <= c + directions[direction][1] * step < n):
+        if grid_numbers[r][c] < grid_numbers[r + directions[direction][0] * step][c + directions[direction][1] * step]:
+            moving_availables.append((r + directions[direction][0] * step, c + directions[direction][1] * step))
         step += 1
     return moving_availables
 
