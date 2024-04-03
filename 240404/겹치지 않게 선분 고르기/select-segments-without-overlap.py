@@ -19,16 +19,17 @@ def possible():
 
 selectmax = 0
 
-def check(select):
+def check(idx):
     global selectmax
-    if select == n and possible():
-        selectmax = max(selectmax, len(selected_segments))
+    if select == n:
+        if possible():
+            selectmax = max(selectmax, len(selected_segments))
         return
     
-    selected_segments.append(segments[select])
-    check(select + 1)
+    selected_segments.append(segments[idx])
+    check(idx + 1)
     selected_segments.pop()
-    check(select + 1)
+    check(idx + 1)
 
 check(0)
 print(selectmax)
