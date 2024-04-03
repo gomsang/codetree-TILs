@@ -21,7 +21,7 @@ selectmax = 0
 
 def check(idx):
     global selectmax
-    if select == n:
+    if idx == n:
         if possible():
             selectmax = max(selectmax, len(selected_segments))
         return
