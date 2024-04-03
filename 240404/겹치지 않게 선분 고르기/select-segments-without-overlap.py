@@ -22,7 +22,7 @@ selectmax = 0
 def check(select):
     global selectmax
     if select == n and possible():
-        selectmax = max(selectmax, select)
+        selectmax = max(selectmax, len(selected_segments))
         return
     
     selected_segments.append(segments[select])
