@@ -17,7 +17,9 @@ def in_range(row, col):
     return 0 <= row < n and 0 <= col < n
 
 for _ in range(k):
-    q.append(map(int, input().split()))
+    r, c = map(int, input().split())
+    q.append((r, c))
+    visited[r][c] = True
 
 while q:
     row, col = q.popleft()
