@@ -7,7 +7,7 @@ visited = [False for _ in range(N + 1)]
 def dfs(vertex):
     for curr_v in graph[vertex]:
         if not visited[curr_v]:
-            visited[vertex] = True
+            visited[curr_v] = True
             dfs(curr_v)
 
 
@@ -17,6 +17,7 @@ for _ in range(M):
     graph[y].append(x)
 
 dfs(1)
-visited[1]
+visited[1] = True
 
-print(sum(visited))
+print(*visited)
+print(sum(visited) - 1)
