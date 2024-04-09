@@ -18,6 +18,7 @@ def in_range(row, col):
 
 for _ in range(k):
     r, c = map(int, input().split())
+    r, c = r-1,c-1
     q.append((r, c))
     visited[r][c] = True
 
