@@ -28,7 +28,14 @@ while q:
         break
     for direction in directions:
         r, c = row + direction[0], col + direction[1]
-        if in_range(r, c) and not visited[r][c] and grid[r][c] == 1:
+
+        if not in_range(r,c):
+            continue
+
+        if visited[r][c]:
+            continue
+
+        if grid[r][c] == 1:
             q.append((r,c))
 
 print(int(escape))
