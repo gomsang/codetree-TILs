@@ -22,7 +22,7 @@ def dfs(row, col, k):
         visited[r][c] = True
         dfs(r, c, k)
 
-max_safearea = 0
+max_safearea = -1
 max_k = 0
 for k in range(1, 101):
     visited = [[False for _ in range(M)] for _ in range(N)]
@@ -33,7 +33,7 @@ for k in range(1, 101):
                 safearea += 1
                 visited[i][j] = True
                 dfs(i, j, k)
-                
+
     if max_safearea < safearea:
         max_safearea = safearea
         max_k = k
