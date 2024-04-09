@@ -6,7 +6,7 @@ visited = [False for _ in range(N + 1)]
 
 def dfs(vertex):
     for curr_v in graph[vertex]:
-        if not visited[vertex]:
+        if not visited[curr_v]:
             visited[vertex] = True
             dfs(curr_v)
 
