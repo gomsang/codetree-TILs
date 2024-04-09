@@ -19,5 +19,4 @@ for _ in range(M):
 dfs(1)
 visited[1] = True
 
-print(*visited)
 print(sum(visited) - 1)
