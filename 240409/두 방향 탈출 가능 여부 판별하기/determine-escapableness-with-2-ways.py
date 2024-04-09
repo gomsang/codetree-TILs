@@ -2,13 +2,13 @@ n, m = map(int, input().split())
 
 grid = []
 
-visited = [[False for _ in range(n)] for _ in range(m)]
+visited = [[False for _ in range(m)] for _ in range(n)]
 
 directions = [(1, 0), (0, 1)]
 
 
 def in_range(row, col):
-    return 0 <= row < m and 0 <= col < n
+    return 0 <= row < n and 0 <= col < m
 
 
 for _ in range(n):
@@ -19,7 +19,7 @@ escape = False
 
 def dfs(row, col):
     global escape
-    if (row, col) == (m - 1, n - 1):
+    if (row, col) == (n - 1, m - 1):
         escape = True
         return
 
