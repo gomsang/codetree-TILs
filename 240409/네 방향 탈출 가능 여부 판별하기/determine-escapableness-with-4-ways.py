@@ -16,13 +16,13 @@ for _ in range(n):
 def in_range(row, col):
     return 0 <= row < n and 0 <= col < m
 
+visited[0][0] = True
 q.append((0,0))
 
 escape = False
 
 while q:
     row, col = q.popleft()
-    visited[row][col] = True
     if row == (n - 1) and col == (m - 1):
         escape = True
         break
@@ -37,5 +37,6 @@ while q:
 
         if grid[r][c] == 1:
             q.append((r,c))
+            visited[r][c] = True
 
 print(int(escape))
