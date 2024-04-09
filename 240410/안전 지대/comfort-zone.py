@@ -33,8 +33,7 @@ for k in range(1, 101):
                 safearea += 1
                 visited[i][j] = True
                 dfs(i, j, k)
-    if safearea < 1: 
-        break
+                
     if max_safearea < safearea:
         max_safearea = safearea
         max_k = k
