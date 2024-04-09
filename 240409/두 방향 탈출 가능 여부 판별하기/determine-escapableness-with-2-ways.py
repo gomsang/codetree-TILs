@@ -4,7 +4,7 @@ grid = []
 
 visited = [[False for _ in range(n)] for _ in range(m)]
 
-directions = [(1, 0), (0, 2)]
+directions = [(1, 0), (0, 1)]
 
 
 def in_range(row, col):
@@ -28,8 +28,6 @@ def dfs(row, col):
         if not in_range(r, c):
             continue
         if not visited[r][c] and grid[r][c] == 1:
-            if direction == (0, 2) and grid[r][c - 1] == 0:
-                continue
             visited[r][c] = True
             dfs(r, c)
 
