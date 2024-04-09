@@ -27,9 +27,9 @@ vill = 0
 for i in range(n):
     for j in range(n):
         if grid[i][j] == 1 and not visited[i][j]:
-            populate[vill] = 0
-            dfs(vill, i, j)
+            populate[vill] = 1
             visited[i][j] = True
+            dfs(vill, i, j)
             vill += 1
 
 print(vill)
