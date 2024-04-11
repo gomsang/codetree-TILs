@@ -35,13 +35,15 @@ def bfs(start_r, start_c):
                 continue
             if visited[r][c]:
                 continue
-            if grid[start_r][start_c] < grid[r][c]:
+            if grid[start_r][start_c] <= grid[r][c]:
                 continue
             q.append((r, c))
             visited[r][c] = True
 
-            if max_v <= grid[r][c]:
+            if max_v < grid[r][c]:
                 max_v = grid[r][c]
+                best_pos = (r, c)
+            elif max_v == grid[r][c]:
                 if r < best_pos[0] or (r == best_pos[0] and c <= best_pos[1]):
                     best_pos = (r, c)
     return best_pos
@@ -49,8 +51,9 @@ def bfs(start_r, start_c):
 
 r, c = r - 1, c - 1
 for _ in range(k):
+    # print("req", (r, c))
     b_r, b_c = bfs(r, c)
-    # print((b_r, b_c))
+    # print("ret", (b_r, b_c))
     if (b_r, b_c) == (n, n):
         break
     r, c = b_r, b_c
