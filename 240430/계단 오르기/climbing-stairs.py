@@ -13,6 +13,7 @@ def process(n):
     dp[n] = process[n-2] + process[n-3]
 
 
+print(dp[n])
 print(dp[n] % 10007)
 
 # n = int(input())
