@@ -14,4 +14,4 @@ for i in range(4, n + 1):
     if dp[i - 3] > 0:
         dp[i] += dp[i - 3]
 
-print(dp[n])
+print(dp[n] % 10007)
