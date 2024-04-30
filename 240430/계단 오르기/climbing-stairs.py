@@ -11,7 +11,7 @@ if n >= 3:
 def process(n):
     if dp[n] > -1:
         return dp[n]
-    dp[n] = process[n-2] + process[n-3]
+    dp[n] = process(n-2) + process(n-3)
 
 if n >= 4:
     process(n)
