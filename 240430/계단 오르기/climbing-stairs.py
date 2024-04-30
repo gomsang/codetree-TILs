@@ -9,14 +9,17 @@ if n >= 3:
     dp[3] = 1
 
 def process(n):
+    if n < 0:
+        return 0
     if dp[n] > -1:
         return dp[n]
     dp[n] = process(n-2) + process(n-3)
+    return dp[n]
 
 if n >= 4:
     process(n)
 
-print(dp[n] % 1007)
+print(dp[n] % 10007)
 
 # n = int(input())
 
