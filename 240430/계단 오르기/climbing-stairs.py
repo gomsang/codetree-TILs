@@ -1,6 +1,7 @@
 n = int(input())
 
 dp = [-1] * (n + 1)
+
 dp[0] = 1
 if n >= 2:
     dp[2] = 1
@@ -12,7 +13,10 @@ def process(n):
         return dp[n]
     dp[n] = process[n-2] + process[n-3]
 
-print(dp[n])
+if n >= 4:
+    process(n)
+
+print(dp[n] % 1007)
 
 # n = int(input())
 
