@@ -11,7 +11,7 @@ dp[0] = 0
 
 for coin in coins:
     for j in range(coin, M + 1):
-        if dp[j - coin] != INT_MIN:
+        if dp[j - coin] == INT_MIN:
             continue
         dp[j] = max(dp[j], dp[j - coin] + 1)
 
