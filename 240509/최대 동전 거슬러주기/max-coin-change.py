@@ -11,8 +11,14 @@ dp[0] = 0
 
 for coin in coins:
     for j in range(coin, M + 1):
-        if dp[j - coin] == INT_MIN:
-            continue
+        # if dp[j - coin] == INT_MIN:
+        #     continue
         dp[j] = max(dp[j], dp[j - coin] + 1)
 
 print(dp[M] if dp[M] != INT_MIN else -1)
+
+
+# 낮은 단위의 동전 부터 채우기
+# 3 4 5 -> 3 x 1 3 x 2 3 x 3
+
+# INT_MIN 인 경우
