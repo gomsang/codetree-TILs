@@ -9,7 +9,7 @@ coins = list(map(int, input().split()))
 dp = [INT_MIN] * (M + 1)
 dp[0] = 0
 
-for coin in coins:
+for coin in reversed(coins):
     for j in range(coin, M + 1):
         if dp[j - coin] == INT_MIN:
             continue
@@ -20,5 +20,3 @@ print(dp[M] if dp[M] != INT_MIN else -1)
 
 # 낮은 단위의 동전 부터 채우기
 # 3 4 5 -> 3 x 1 3 x 2 3 x 3
-
-# INT_MIN 인 경우
