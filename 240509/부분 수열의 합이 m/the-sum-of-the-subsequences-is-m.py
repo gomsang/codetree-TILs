@@ -14,3 +14,7 @@ for num in A:
             dp[j] = min(dp[j], dp[j - num] + 1)
 
 print(dp[m] if dp[m] != INT_MAX else -1)
+
+# dp[j] = min(dp[j], dp[j - num] + 1)
+# j -> 현재 만들어야하는 합
+# dp[j - num] -> 합이 j - num 을 만ㄷ르기 위한 최소 부분 수열
