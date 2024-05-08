@@ -16,3 +16,7 @@ for i in range(1, M + 1):
             dp[i] = min(dp[i], dp[i - coin[j]] + 1) 
 
 print(-1 if dp[M] == INT_MAX else dp[M])
+
+# dp[i] = min(dp[i], dp[i-coin[j]] + 1)
+# coin[j] 는 사용 가능한 동전
+# i - coin[j] 는 동전 사용전 남은 금액
